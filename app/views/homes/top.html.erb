@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <%= link_to 'Sign out', '/sign_out' %>
+  <ul>
+    <li>ID: <%= current_user.id %></li>
+    <li>NAME: <%= current_user.name %></li>
+    <li>PROVIDER: <%= current_user.provider %></li>
+  </ul>
+<% else %>
+  <%= link_to 'Githubアカウントでサインイン', '/auth/github' %>
+<% end %>
