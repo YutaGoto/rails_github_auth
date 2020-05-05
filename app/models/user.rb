@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  def self.create_with_omniauth!(auth)
+  def self.find_or_create_with_omniauth!(auth)
+    user = find_by(uid: auth['uid'])
+    return user if user.present?
     create! do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
